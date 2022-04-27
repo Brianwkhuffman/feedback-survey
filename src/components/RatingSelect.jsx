@@ -2,25 +2,26 @@ import {useState} from 'react'
 
 function RatingSelect({ select }) {
     const ratingNumbers = [...Array(10)]
-    const [selected, setSelected] = useState('')
+    const [selected, setSelected] = useState(10)
 
     const handleChange = (e) => {
-        setSelected(e.currentTarget.value)
-        select(e.currentTarget.value)
+        setSelected(+e.currentTarget.value)
+        select(+e.currentTarget.value)
     }
   
     return (
         <ul className='rating'>
             {ratingNumbers.map((v, i) => {
+                let currentNum = i+1
                 return (
-                <li key={i+1}>
+                <li key={currentNum}>
                     <input
                     type='radio'
-                    id={`num${i+1}`}
-                    value={i+1}
+                    id={`num${currentNum}`}
+                    value={currentNum}
                     onChange={handleChange}
-                    checked={selected === `${i+1}`} />
-                    <label htmlFor={`num${i+1}`}>{i+1}</label>
+                    checked={selected === (parseInt(currentNum))} />
+                    <label htmlFor={`num${currentNum}`}>{currentNum}</label>
                 </li>
                 )
             })}

@@ -7,7 +7,7 @@ function FeedbackForm({ handleAdd }) {
     const [text, setText] = useState('')
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [validationMsg, setValidationMessage] = useState('')
-    const [rating, setRating] = useState('')
+    const [rating, setRating] = useState(1)
 
     const handleTextChange = (e) => {
         if (text === '') {
@@ -37,8 +37,8 @@ function FeedbackForm({ handleAdd }) {
 
     const resetFields = () => {
         setText('')
-        //setRating not working yet
-        setRating('1')
+        //setRating doesnt work yet
+        setRating(1)
     }
 
     return (
