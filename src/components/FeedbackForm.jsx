@@ -37,8 +37,6 @@ function FeedbackForm({ handleAdd }) {
 
     const resetFields = () => {
         setText('')
-        //setRating doesnt work yet
-        setRating(1)
     }
 
     return (
