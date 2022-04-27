@@ -17,7 +17,10 @@ function App() {
     }
 
     const addFeedback = (newFeedback) => {
+        let feedbackId = (new Date().valueOf()) + (Math.floor(Math.random() * 100))
+        newFeedback.id = feedbackId
         console.log(newFeedback)
+        setFeedback([newFeedback, ...feedback])
     }
     
     return (
