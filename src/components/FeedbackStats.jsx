@@ -2,6 +2,7 @@ function FeedbackStats({ feedback }) {
     let averageRating = feedback.reduce((acc, curr) => {
         return acc + curr.rating;
     }, 0) / feedback.length;
+    //Remove trailing decimals
     averageRating = averageRating.toFixed(1).replace(/[,.]0$/, '')
 
     return (
