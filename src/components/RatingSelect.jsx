@@ -20,7 +20,7 @@ function RatingSelect({ select }) {
                     id={`num${currentNum}`}
                     value={currentNum}
                     onChange={handleChange}
-                    checked={selected === (parseInt(currentNum))} />
+                    checked={selected === (currentNum)} />
                     <label htmlFor={`num${currentNum}`}>{currentNum}</label>
                 </li>
                 )
