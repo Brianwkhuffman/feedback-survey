@@ -12,20 +12,6 @@ import {FeedbackProvider} from './context/FeedbackContext'
 function App() {
 
     const [feedback, setFeedback] = useState(FeedbackData)
-
-    const deleteFeedback = (id) => {
-        if (window.confirm('Are you sure you want to delete this review?')) {
-            let newFeedback = feedback.filter((item) => item.id !== id)
-            setFeedback(newFeedback)
-        }
-    }
-
-    const addFeedback = (newFeedback) => {
-        let feedbackId = (new Date().valueOf()) + (Math.floor(Math.random() * 100))
-        newFeedback.id = feedbackId
-        console.log(newFeedback)
-        setFeedback([newFeedback, ...feedback])
-    }
     
     return (
         <FeedbackProvider>
@@ -35,9 +21,9 @@ function App() {
                 <Routes>
                 <Route exact path='/' element={
                     <>
-                        <FeedbackForm handleAdd={addFeedback} />
+                        <FeedbackForm />
                         <FeedbackStats />
-                        <FeedbackList handleDelete={deleteFeedback} />
+                        <FeedbackList />
                         <AboutIconLink />
                     </>
                 }>
