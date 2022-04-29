@@ -1,7 +1,7 @@
 import {useState, useContext} from 'react'
-import RatingSelect from './RatingSelect'
 import Card from './shared/Card'
 import Button from './shared/Button'
+import RatingSelect from './RatingSelect'
 import FeedbackContext from '../context/FeedbackContext'
 
 function FeedbackForm() {
@@ -9,6 +9,7 @@ function FeedbackForm() {
     const [btnDisabled, setBtnDisabled] = useState(true)
     const [validationMsg, setValidationMessage] = useState('')
     const [rating, setRating] = useState(1)
+
     const {addFeedback} = useContext(FeedbackContext)
 
     const handleTextChange = (e) => {
@@ -39,6 +40,7 @@ function FeedbackForm() {
 
     const resetFields = () => {
         setText('')
+        //need to reset rating select
     }
 
     return (
