@@ -1,8 +1,15 @@
-import {useState} from 'react'
+import { useState, useContext, useEffect } from 'react'
+import FeedbackContext from '../context/FeedbackContext'
 
 function RatingSelect({ select }) {
     const ratingNumbers = [...Array(10)]
-    const [selected, setSelected] = useState()
+    const [selected, setSelected] = useState(1)
+
+    const {feedbackToEdit} = useContext(FeedbackContext)
+
+    useEffect(() => {
+        setSelected(feedbackToEdit.item.rating)
+    }, [feedbackToEdit])
 
     const handleChange = (e) => {
         setSelected(+e.currentTarget.value)
