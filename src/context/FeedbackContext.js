@@ -5,11 +5,26 @@ const FeedbackContext = createContext()
 export const FeedbackProvider = ({ children }) => {
     const [feedback, setFeedback] = useState([
         {
-        id: 1,
-        text: 'This company had pretty good service but could be better',
-        rating: 7
+            id: 1,
+            text: 'This company had pretty good service but could be better',
+            rating: 7
+        },
+        {
+            id: 2,
+            text: 'This company had pretty good service but could be better 222222',
+            rating: 4
+        },
+        {
+            id: 3,
+            text: 'This company had pretty good service but could be better 33333',
+            rating: 6
         }
     ])
+
+    const [feedbackToEdit, setFeedbackToEdit] = useState({
+        item: {},
+        edit: false
+    })
     
     const addFeedback = (newFeedback) => {
         let feedbackId = (new Date().valueOf()) + (Math.floor(Math.random() * 100))
@@ -24,12 +39,20 @@ export const FeedbackProvider = ({ children }) => {
         }
     }
 
+    const editFeedback = (item) => {
+        setFeedbackToEdit({
+            item,
+            edit: true
+        })
+    }
+
     return (
         <FeedbackContext.Provider 
         value={{
             feedback,
             deleteFeedback,
-            addFeedback
+            addFeedback,
+            editFeedback
             }}>
 
             {children}
