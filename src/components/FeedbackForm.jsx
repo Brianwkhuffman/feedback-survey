@@ -22,7 +22,6 @@ function FeedbackForm() {
 
     const handleTextChange = (e) => {
         if (text === '') {
-            setBtnDisabled(true)
             setValidationMessage(null)
         } else if (text.trim().length < 10) {
             setBtnDisabled(true)
@@ -52,6 +51,7 @@ function FeedbackForm() {
 
     const resetFields = () => {
         setText('')
+        setBtnDisabled(true)
         //need to reset rating select
     }
 
@@ -67,7 +67,7 @@ function FeedbackForm() {
               <div className="input-group">
                   <input 
                   type='text'
-                  placeholder='Write a review'
+                  placeholder=' Write a review'
                   onChange={handleTextChange}
                   value={text}/>
                    
