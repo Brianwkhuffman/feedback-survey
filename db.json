@@ -1,0 +1,29 @@
+{
+  "feedback": [
+    {
+      "id": 1,
+      "rating": 10,
+      "text": "This was pretty cool!"
+    },
+    {
+      "id": 2,
+      "rating": 6,
+      "text": "Waited a while but the person was very helpful"
+    },
+    {
+      "id": 3,
+      "rating": 7,
+      "text": "It's good, nothing special"
+    },
+    {
+      "rating": "10",
+      "text": "this is from the outside worlddddddd",
+      "id": 5
+    },
+    {
+      "rating": "6",
+      "text": "yoyoyoyoyyoyoyoo",
+      "id": 6
+    }
+  ]
+}
