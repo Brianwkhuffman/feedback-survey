@@ -5,7 +5,7 @@ function FeedbackStats() {
     const {feedback} = useContext(FeedbackContext)
 
     let averageRating = feedback.reduce((acc, curr) => {
-        return acc + curr.rating;
+        return acc + parseInt(curr.rating)
     }, 0) / feedback.length;
     //Remove trailing decimals
     averageRating = averageRating.toFixed(1).replace(/[,.]0$/, '')
