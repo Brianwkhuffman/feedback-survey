@@ -3,6 +3,7 @@ import { useState, createContext, useEffect } from 'react'
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({ children }) => {
+    const [isLoading, setIsLoading] = useState(true)
     const [feedback, setFeedback] = useState([])
 
     const [feedbackToEdit, setFeedbackToEdit] = useState({
@@ -19,6 +20,7 @@ export const FeedbackProvider = ({ children }) => {
         const response = await fetch("http://localhost:5000/feedback?_sort=id&_order=desc")
         const data = await response.json()
         setFeedback(data)
+        setIsLoading(false)
     }
     
     const addFeedback = (newFeedback) => {
@@ -50,10 +52,11 @@ export const FeedbackProvider = ({ children }) => {
         value={{
             feedback,
             feedbackToEdit,
+            isLoading,
             deleteFeedback,
             addFeedback,
             editFeedback,
-            updateFeedback
+            updateFeedback,
         }}>
 
             {children}
