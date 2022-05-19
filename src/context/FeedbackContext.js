@@ -1,30 +1,25 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 
 const FeedbackContext = createContext()
 
 export const FeedbackProvider = ({ children }) => {
-    const [feedback, setFeedback] = useState([
-        {
-            id: 1,
-            text: 'This company had pretty good service but could be better',
-            rating: 7
-        },
-        {
-            id: 2,
-            text: 'This company had pretty good service but could be better 222222',
-            rating: 4
-        },
-        {
-            id: 3,
-            text: 'This company had pretty good service but could be better 33333',
-            rating: 6
-        }
-    ])
+    const [feedback, setFeedback] = useState([])
 
     const [feedbackToEdit, setFeedbackToEdit] = useState({
         item: {},
         edit: false
     })
+
+    useEffect(() => {
+        fetchFeedback()
+    }, [])
+
+    //Get Feedback
+    const fetchFeedback = async () => {
+        const response = await fetch("http://localhost:5000/feedback?_sort=id&_order=desc")
+        const data = await response.json()
+        setFeedback(data)
+    }
     
     const addFeedback = (newFeedback) => {
         let feedbackId = (new Date().valueOf()) + (Math.floor(Math.random() * 100))
