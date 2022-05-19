@@ -17,16 +17,22 @@ export const FeedbackProvider = ({ children }) => {
 
     //Get Feedback
     const fetchFeedback = async () => {
-        const response = await fetch("http://localhost:5000/feedback?_sort=id&_order=desc")
+        const response = await fetch("/feedback?_sort=id&_order=desc")
         const data = await response.json()
         setFeedback(data)
         setIsLoading(false)
     }
     
-    const addFeedback = (newFeedback) => {
-        let feedbackId = (new Date().valueOf()) + (Math.floor(Math.random() * 100))
-        newFeedback.id = feedbackId
-        setFeedback([newFeedback, ...feedback])
+    const addFeedback = async (newFeedback) => {
+        const response = await fetch('/feedback', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFeedback)
+        })
+        const data = await response.json()
+        setFeedback([data, ...feedback])
     }
 
     const deleteFeedback = (id) => {
